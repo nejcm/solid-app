@@ -1,14 +1,15 @@
 {
   "name": "solid-todo-app",
   "version": "0.0.1",
-  "description": "",
+  "description": "Solid.js TODO app",
+  "author": "Nejc Mursic <nmursi2@gmail.com> (https://github.com/nejcm)",
+  "license": "MIT",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "license": "MIT",
   "dependencies": {
     "nanoid": "^4.0.2",
     "solid-js": "^1.7.11"
