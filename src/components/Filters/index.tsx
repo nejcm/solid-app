@@ -1,5 +1,5 @@
-import { Accessor, Component, Show } from "solid-js";
-import { Filter } from "../../types";
+import { Accessor, Component, Show } from 'solid-js';
+import { Filter } from '../../types';
 
 export interface FiltersProps {
   totalCount: number;

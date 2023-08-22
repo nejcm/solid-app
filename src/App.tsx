@@ -1,10 +1,10 @@
-import { nanoid } from "nanoid";
-import { For, createMemo, type Component } from "solid-js";
-import Filters from "./components/Filters";
-import Form from "./components/Form";
-import Header from "./components/Header";
-import { createLocalStore } from "./services/store";
-import { Filter, Todo, TodoStore } from "./types";
+import { nanoid } from 'nanoid';
+import { For, createMemo, type Component } from 'solid-js';
+import Filters from './components/Filters';
+import Form from './components/Form';
+import Header from './components/Header';
+import { createLocalStore } from './services/store';
+import { Filter, Todo, TodoStore } from './types';
 
 const App: Component = () => {
   const [state, setState] = createLocalStore<TodoStore>({
@@ -14,7 +14,7 @@ const App: Component = () => {
   });
   const remainingCount = createMemo(
     () =>
-      state.todos.length - state.todos.filter((todo) => todo.completed).length
+      state.todos.length - state.todos.filter((todo) => todo.completed).length,
   );
   const filterList = (todos: Todo[]) => {
     if (state.filter === Filter.uncompleted) {
@@ -25,20 +25,20 @@ const App: Component = () => {
     return todos;
   };
   const removeTodo = (todoId: string) =>
-    setState("todos", (t) => t.filter((item) => item.id !== todoId));
+    setState('todos', (t) => t.filter((item) => item.id !== todoId));
   const editTodo = (todo: Partial<Todo>) =>
-    setState("todos", (item) => item.id === todo.id, todo);
+    setState('todos', (item) => item.id === todo.id, todo);
   const clearCompleted = () =>
-    setState("todos", (t) => t.filter((todo) => !todo.completed));
+    setState('todos', (t) => t.filter((todo) => !todo.completed));
   const toggleAll = (completed: boolean) =>
-    setState("todos", (todo) => todo.completed !== completed, { completed });
+    setState('todos', (todo) => todo.completed !== completed, { completed });
   const setFilter = (filter: Filter) => setState({ ...state, filter });
-  const setEditing = (todoId?: string) => setState("editingId", todoId);
+  const setEditing = (todoId?: string) => setState('editingId', todoId);
   const onSubmit = (ev: SubmitEvent) => {
     ev.preventDefault();
     const form = ev.currentTarget as HTMLFormElement;
     const data = new FormData(form);
-    const title = data.get("title");
+    const title = data.get('title');
     if (title) {
       setState({
         ...state,
@@ -53,7 +53,7 @@ const App: Component = () => {
   };
   const save = (
     todoId: string,
-    { target: { value } }: { target: HTMLInputElement }
+    { target: { value } }: { target: HTMLInputElement },
   ) => {
     const title = value.trim();
     if (state.editingId === todoId && title) {
@@ -63,11 +63,11 @@ const App: Component = () => {
   };
   const toggle = (
     todoId: string,
-    { target: { checked } }: { target: HTMLInputElement }
+    { target: { checked } }: { target: HTMLInputElement },
   ) => editTodo({ id: todoId, completed: checked });
   const doneEditing = (todoId: string, e: KeyboardEvent) => {
-    if (e.code === "Enter") save(todoId, e as any);
-    else if (e.code === "Escape") setEditing();
+    if (e.code === 'Enter') save(todoId, e as any);
+    else if (e.code === 'Escape') setEditing();
   };
 
   return (
@@ -105,8 +105,8 @@ const App: Component = () => {
                       onKeyUp={[doneEditing, todo.id]}
                       readonly={state.editingId === todo.id}
                       classList={{
-                        "line-through": todo.completed,
-                        "text-neutral-400": todo.completed,
+                        'line-through': todo.completed,
+                        'text-neutral-400': todo.completed,
                       }}
                     />
                   </div>
@@ -123,8 +123,8 @@ const App: Component = () => {
           </For>
         </ul>
         <div class="mt-6">
-          <strong>{remainingCount()}</strong>{" "}
-          {remainingCount() === 1 ? " item " : " items "} left
+          <strong>{remainingCount()}</strong>{' '}
+          {remainingCount() === 1 ? ' item ' : ' items '} left
         </div>
       </div>
     </>

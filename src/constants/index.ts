@@ -1,1 +1,1 @@
-export const LOCAL_STORAGE_KEY = "todos";
+export const LOCAL_STORAGE_KEY = 'todos';

@@ -1,0 +1,10 @@
+node_modules/
+types/
+dist/
+build/
+config/
+*.d.ts
+*.config.*
+.eslintrc.*
+.yarn
+tsconfig.json

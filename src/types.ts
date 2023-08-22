@@ -5,9 +5,9 @@ export type Todo = {
 };
 
 export enum Filter {
-  "all" = "all",
-  "completed" = "completed",
-  "uncompleted" = "uncompleted",
+  'all' = 'all',
+  'completed' = 'completed',
+  'uncompleted' = 'uncompleted',
 }
 
 export type TodoStore = {
